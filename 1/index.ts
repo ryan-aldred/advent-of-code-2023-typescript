@@ -6,7 +6,7 @@ async function decodeDumbElfShit() {
   const text = await file.text();
 
   const dataArr = text.trim().split("\n");
-  let finalValue = 0;
+  let runningTotal = 0;
 
   for (const string of dataArr) {
     const numbersFound = string.match(/[0-9]/g);
@@ -17,10 +17,10 @@ async function decodeDumbElfShit() {
       numbersFound[0] + numbersFound[numbersFound.length - 1]
     );
 
-    finalValue += currentNumber;
+    runningTotal += currentNumber;
   }
 
-  return finalValue;
+  return runningTotal;
 }
 
 console.log(await decodeDumbElfShit());
